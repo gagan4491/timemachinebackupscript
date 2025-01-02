@@ -5,8 +5,8 @@ BACKUP_UUID="67042DAE-5BB4-468D-8A44-F6BEAD3DA2BF"
 TIMEMACHINE_UUID="ED3EB508-7808-4493-888D-43827DC733BB"
 
 # Check if the backup or timemachine drives are mounted
-BACKUP_MOUNTED=$(diskutil info /Volumes/backup | grep "Volume UUID" | awk '{print $NF}')
-TIMEMACHINE_MOUNTED=$(diskutil info /Volumes/timemachine | grep "Volume UUID" | awk '{print $NF}')
+BACKUP_MOUNTED=$(/usr/sbin/diskutil info /Volumes/backup | grep "Volume UUID" | awk '{print $NF}')
+TIMEMACHINE_MOUNTED=$(/usr/sbin/diskutil info /Volumes/timemachine | grep "Volume UUID" | awk '{print $NF}')
 
 # Log the current UUIDs for debugging
 echo "Backup Drive UUID (Mounted): $BACKUP_MOUNTED"
@@ -40,3 +40,9 @@ else
 fi
 
 echo "Operation complete."
+
+
+
+
+#### @reboot /Users/gsingh/PycharmProjects/timemachinebackupscript/timemachine.sh >> /tmp/backup_log.txt 2>&1
+#### * * * * * /Users/gsingh/PycharmProjects/timemachinebackupscript/timemachine.sh >> /tmp/backup_log.txt 2>&1
